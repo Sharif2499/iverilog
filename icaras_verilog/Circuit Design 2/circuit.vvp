@@ -1,0 +1,72 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-965-g55e06db6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000000000a69b80 .scope module, "stimulus" "stimulus" 2 2;
+ .timescale -9 -12;
+v0000000000974a60_0 .var "A", 0 0;
+v00000000009741a0_0 .var "B", 0 0;
+v0000000000974060_0 .net "Z", 0 0, L_00000000009b9f90;  1 drivers
+S_0000000000975e70 .scope module, "uut" "circuit" 2 7, 3 1 0, S_0000000000a69b80;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "Z";
+L_0000000000942b70 .functor NOT 1, v0000000000974a60_0, C4<0>, C4<0>, C4<0>;
+L_0000000000976130 .functor AND 1, L_0000000000942b70, v00000000009741a0_0, C4<1>, C4<1>;
+L_00000000009761a0 .functor NOT 1, v0000000000974a60_0, C4<0>, C4<0>, C4<0>;
+L_00000000009b9dd0 .functor NOT 1, v00000000009741a0_0, C4<0>, C4<0>, C4<0>;
+L_00000000009b9eb0 .functor AND 1, L_00000000009761a0, L_00000000009b9dd0, C4<1>, C4<1>;
+L_00000000009b9b30 .functor OR 1, L_0000000000976130, L_00000000009b9eb0, C4<0>, C4<0>;
+L_00000000009b9ba0 .functor AND 1, v0000000000974a60_0, v00000000009741a0_0, C4<1>, C4<1>;
+L_00000000009b9c80 .functor OR 1, L_00000000009b9b30, L_00000000009b9ba0, C4<0>, C4<0>;
+L_00000000009b9e40 .functor NOT 1, v0000000000974a60_0, C4<0>, C4<0>, C4<0>;
+L_00000000009b9c10 .functor AND 1, L_00000000009b9e40, v00000000009741a0_0, C4<1>, C4<1>;
+L_00000000009b9f90 .functor OR 1, L_00000000009b9c80, L_00000000009b9c10, C4<0>, C4<0>;
+v0000000000942d90_0 .net "A", 0 0, v0000000000974a60_0;  1 drivers
+v0000000000a6af40_0 .net "B", 0 0, v00000000009741a0_0;  1 drivers
+v00000000009428d0_0 .net "Z", 0 0, L_00000000009b9f90;  alias, 1 drivers
+v0000000000942fb0_0 .net *"_ivl_0", 0 0, L_0000000000942b70;  1 drivers
+v0000000000976000_0 .net *"_ivl_10", 0 0, L_00000000009b9b30;  1 drivers
+v0000000000974ba0_0 .net *"_ivl_12", 0 0, L_00000000009b9ba0;  1 drivers
+v00000000009749c0_0 .net *"_ivl_14", 0 0, L_00000000009b9c80;  1 drivers
+v00000000009742e0_0 .net *"_ivl_16", 0 0, L_00000000009b9e40;  1 drivers
+v00000000009746a0_0 .net *"_ivl_18", 0 0, L_00000000009b9c10;  1 drivers
+v0000000000973fc0_0 .net *"_ivl_2", 0 0, L_0000000000976130;  1 drivers
+v0000000000974920_0 .net *"_ivl_4", 0 0, L_00000000009761a0;  1 drivers
+v0000000000974560_0 .net *"_ivl_6", 0 0, L_00000000009b9dd0;  1 drivers
+v0000000000974ce0_0 .net *"_ivl_8", 0 0, L_00000000009b9eb0;  1 drivers
+    .scope S_0000000000a69b80;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000974a60_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000009741a0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000000974a60_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000009741a0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000000974a60_0, 0, 1;
+    %delay 40000, 0;
+    %end;
+    .thread T_0;
+    .scope S_0000000000a69b80;
+T_1 ;
+    %vpi_call 2 18 "$monitor", "A=%d,B=%d,Z=%d \012", v0000000000974a60_0, v00000000009741a0_0, v0000000000974060_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "stimulus.v";
+    "logic.v";
